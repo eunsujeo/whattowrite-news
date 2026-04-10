@@ -1,0 +1,20 @@
+{
+  "name": "whattowrite-news",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "crawl": "node scripts/crawl.js",
+    "analyze": "node scripts/analyze.js",
+    "build": "node scripts/build.js",
+    "run": "node scripts/run.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.86.1",
+    "cheerio": "^1.2.0"
+  }
+}
