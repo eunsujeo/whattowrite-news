@@ -165,7 +165,7 @@
 <nav>
   <div class="nav-inner">
     <div class="logo">AI Coding Guide</div>
-    <div class="update-info">마지막 업데이트: 2026년 4월 10일 오전 10:36</div>
+    <div class="update-info">마지막 업데이트: 2026년 4월 10일 오후 12:27</div>
   </div>
 </nav>
 
@@ -174,11 +174,11 @@
   <p>Claude & Codex 블로그를 매일 자동 크롤링하고<br>AI가 분석하여 사용법을 알려드립니다</p>
   <div class="stats">
     <div class="stat">
-      <div class="stat-num">32</div>
+      <div class="stat-num">34</div>
       <div class="stat-label">분석된 글</div>
     </div>
     <div class="stat">
-      <div class="stat-num">22</div>
+      <div class="stat-num">24</div>
       <div class="stat-label">Claude</div>
     </div>
     <div class="stat">
@@ -197,6 +197,86 @@
 
   <div id="articles">
     
+    <article class="article-card" data-source="claude">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="badge badge-claude">Claude</span>
+          <span class="difficulty" style="color:var(--accent-claude)">중급</span>
+          <span class="card-date">2026년 4월 9일</span>
+        </div>
+        <h3><a href="https://claude.com/blog/the-advisor-strategy" target="_blank">The advisor strategy: Give Sonnet an intelligence boost with Opus</a></h3>
+      </div>
+
+      
+      <div class="card-section">
+        <h4>요약</h4>
+        <p>Opus를 어드바이저로, Sonnet/Haiku를 실행자로 활용하는 전략. Sonnet + Opus 어드바이저 조합으로 Sonnet 단독 대비 2.7%p 성능 향상, 11.9% 비용 절감을 달성합니다. API에 advisor_20260301 도구를 추가하여 한 번의 요청으로 모델 간 전환이 가능합니다.</p>
+      </div>
+
+      
+      <div class="card-section">
+        <h4>주요 기능</h4>
+        <ul><li>Opus를 어드바이저로 활용 - 어려운 결정이 필요할 때만 호출</li><li>Sonnet + Opus 조합으로 2.7%p 성능 향상, 11.9% 비용 절감</li><li>advisor_20260301 도구로 한 번의 API 요청에서 모델 간 전환</li><li>어드바이저 토큰 별도 청구로 비용 추적 용이</li><li>Sonnet/Haiku가 주도하고 필요시에만 Opus에 자문</li></ul>
+      </div>
+
+      
+      <div class="card-section">
+        <h4>사용 방법</h4>
+        <p>API 호출 시 도구 목록에 advisor_20260301을 추가하면 Sonnet이 스스로 판단하여 어려운 문제에서 Opus에 자문을 요청합니다. 별도 인프라 변경 없이 도구 하나만 추가하면 됩니다.</p>
+      </div>
+
+      
+      <div class="card-section">
+        <h4>이럴 때 사용하세요</h4>
+        <ul class="use-cases"><li>비용을 줄이면서도 복잡한 작업의 정확도를 높이고 싶을 때</li><li>대량의 API 호출에서 비용과 품질의 균형이 필요할 때</li><li>Sonnet으로 대부분 처리하되 핵심 판단만 Opus에 맡기고 싶을 때</li><li>에이전트의 의사결정 품질을 높이면서 비용을 통제할 때</li></ul>
+      </div>
+
+      <div class="card-footer">
+        <div class="tags"><span class="tag">어드바이저</span><span class="tag">비용 최적화</span><span class="tag">Opus</span><span class="tag">Sonnet</span><span class="tag">API</span></div>
+        <a class="source-link" href="https://claude.com/blog/the-advisor-strategy" target="_blank">원문 보기 &rarr;</a>
+      </div>
+    </article>
+
+    <article class="article-card" data-source="claude">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="badge badge-claude">Claude</span>
+          <span class="difficulty" style="color:var(--accent-tip)">초급</span>
+          <span class="card-date">2026년 4월 9일</span>
+        </div>
+        <h3><a href="https://claude.com/blog/cowork-for-enterprise" target="_blank">Making Claude Cowork ready for enterprise</a></h3>
+      </div>
+
+      
+      <div class="card-section">
+        <h4>요약</h4>
+        <p>Claude Cowork이 모든 유료 플랜에서 정식 출시되었습니다. 역할 기반 접근 제어, 팀별 지출 한도, 사용 현황 분석, OpenTelemetry 지원, Zoom MCP 커넥터 등 엔터프라이즈 기능이 추가되었습니다. 엔지니어링 외 부서(마케팅, 재무, 법무)에서의 활용도가 특히 높습니다.</p>
+      </div>
+
+      
+      <div class="card-section">
+        <h4>주요 기능</h4>
+        <ul><li>역할 기반 접근 제어 - 관리자가 사용자 그룹/역할 관리</li><li>팀별 지출 한도 - 관리 콘솔에서 예산 설정</li><li>사용 현황 분석 - 대시보드와 API로 Cowork 활동 추적</li><li>Zoom MCP 커넥터 - 회의 인텔리전스 통합</li><li>커넥터별 권한 제어 - 읽기 전용/쓰기 작업 제한</li></ul>
+      </div>
+
+      
+      <div class="card-section">
+        <h4>사용 방법</h4>
+        <p>유료 플랜에서 Cowork을 활성화하고, 관리 콘솔에서 팀 구성원의 역할과 권한을 설정하세요. 커넥터(Slack, Zoom 등)를 연결하고, 팀별 지출 한도를 설정하면 됩니다.</p>
+      </div>
+
+      
+      <div class="card-section">
+        <h4>이럴 때 사용하세요</h4>
+        <ul class="use-cases"><li>팀 전체가 Claude를 사용하되 비용과 권한을 통제하고 싶을 때</li><li>비개발 부서(마케팅, 재무, 법무)에 AI 도구를 도입할 때</li><li>Zoom 회의 내용을 Claude와 연동하여 업무에 활용할 때</li><li>조직의 AI 사용 현황을 모니터링하고 리포트할 때</li></ul>
+      </div>
+
+      <div class="card-footer">
+        <div class="tags"><span class="tag">Cowork</span><span class="tag">엔터프라이즈</span><span class="tag">권한 관리</span><span class="tag">Zoom</span><span class="tag">팀 협업</span></div>
+        <a class="source-link" href="https://claude.com/blog/cowork-for-enterprise" target="_blank">원문 보기 &rarr;</a>
+      </div>
+    </article>
+
     <article class="article-card" data-source="claude">
       <div class="card-header">
         <div class="card-meta">
@@ -1162,7 +1242,7 @@
         <div class="card-meta">
           <span class="badge badge-codex">Codex</span>
           <span class="difficulty" style="color:var(--accent-warn)">고급</span>
-          <span class="card-date">2026년 2월 25일</span>
+          <span class="card-date">2026년 3월 25일</span>
         </div>
         <h3><a href="https://developers.openai.com/blog/realtime-perplexity-computer" target="_blank">How Perplexity Brought Voice Search to Millions Using the Realtime API</a></h3>
       </div>
@@ -1202,7 +1282,7 @@
         <div class="card-meta">
           <span class="badge badge-codex">Codex</span>
           <span class="difficulty" style="color:var(--accent-tip)">초급</span>
-          <span class="card-date">2026년 2월 24일</span>
+          <span class="card-date">2026년 3월 20일</span>
         </div>
         <h3><a href="https://developers.openai.com/blog/designing-delightful-frontends-with-gpt-5-4" target="_blank">Designing delightful frontends with GPT-5.4</a></h3>
       </div>
@@ -1242,7 +1322,7 @@
         <div class="card-meta">
           <span class="badge badge-codex">Codex</span>
           <span class="difficulty" style="color:var(--accent-tip)">초급</span>
-          <span class="card-date">2026년 2월 24일</span>
+          <span class="card-date">2026년 3월 11일</span>
         </div>
         <h3><a href="https://developers.openai.com/blog/one-year-of-responses" target="_blank">From prompts to products: One year of Responses</a></h3>
       </div>
