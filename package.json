@@ -6,6 +6,7 @@
   "scripts": {
     "crawl": "node scripts/crawl.js",
     "analyze": "node scripts/analyze.js",
+    "pricing": "node scripts/pricing.js",
     "build": "node scripts/build.js",
     "run": "node scripts/run.js"
   },

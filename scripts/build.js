@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const DATA_PATH = path.join(__dirname, "..", "data", "articles.json");
+const PRICING_PATH = path.join(__dirname, "..", "data", "pricing.json");
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "index.html");
 
 function escapeHtml(str) {
@@ -68,7 +69,78 @@ function renderArticleCard(article) {
     </article>`;
 }
 
-function buildHTML(data) {
+function formatKrw(usd, rate) {
+  if (!usd) return "무료";
+  const krw = Math.round(usd * rate);
+  return `₩${krw.toLocaleString("ko-KR")}`;
+}
+
+function renderPricingSection(pricing) {
+  if (!pricing || !pricing.exchangeRate?.usdToKrw) return "";
+
+  const rate = pricing.exchangeRate.usdToKrw;
+  const rateDate = pricing.exchangeRate.fetchedAt
+    ? new Date(pricing.exchangeRate.fetchedAt).toLocaleDateString("ko-KR", {
+        year: "numeric", month: "long", day: "numeric",
+      })
+    : "";
+
+  const renderSubs = (plans) => plans.map((p) => `
+    <div class="price-row">
+      <div class="price-name">
+        <strong>${escapeHtml(p.name)}</strong>
+        <span class="price-desc">${escapeHtml(p.description)}</span>
+      </div>
+      <div class="price-value">
+        <span class="price-usd">${p.price === 0 ? "Free" : "$" + p.price + "/월"}</span>
+        ${p.price > 0 ? `<span class="price-krw">${formatKrw(p.price, rate)}/월</span>` : ""}
+      </div>
+    </div>`).join("");
+
+  const renderApis = (models) => models.map((m) => `
+    <div class="price-row">
+      <div class="price-name">
+        <strong>${escapeHtml(m.model)}</strong>
+        <span class="price-desc">${escapeHtml(m.unit)}</span>
+      </div>
+      <div class="price-value">
+        <div class="price-usd">입력 $${m.input} / 출력 $${m.output}</div>
+        <div class="price-krw">입력 ${formatKrw(m.input, rate)} / 출력 ${formatKrw(m.output, rate)}</div>
+      </div>
+    </div>`).join("");
+
+  return `
+  <section id="pricing">
+    <div class="section-title">
+      <h2>가격 정보</h2>
+      <div class="exchange-info">1 USD = ₩${rate.toLocaleString("ko-KR")} (${rateDate} 기준)</div>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3 class="pricing-title claude">Claude 구독</h3>
+        ${renderSubs(pricing.subscriptions.claude)}
+      </div>
+      <div class="pricing-card">
+        <h3 class="pricing-title openai">OpenAI / ChatGPT 구독</h3>
+        ${renderSubs(pricing.subscriptions.openai)}
+      </div>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3 class="pricing-title claude">Claude API</h3>
+        ${renderApis(pricing.apiPricing.claude)}
+      </div>
+      <div class="pricing-card">
+        <h3 class="pricing-title openai">OpenAI API</h3>
+        ${renderApis(pricing.apiPricing.openai)}
+      </div>
+    </div>
+  </section>`;
+}
+
+function buildHTML(data, pricing) {
   const claudeArticles = data.articles.filter((a) => a.source === "claude" && a.analyzed);
   const codexArticles = data.articles.filter((a) => a.source === "codex" && a.analyzed);
   const allAnalyzed = data.articles.filter((a) => a.analyzed);
@@ -232,6 +304,56 @@ function buildHTML(data) {
       50% { opacity: 0.6; }
     }
 
+    /* Pricing */
+    #pricing { margin-bottom: 3rem; }
+    .section-title {
+      display: flex; align-items: baseline; justify-content: space-between;
+      flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem; border-bottom: 1px solid var(--border);
+    }
+    .section-title h2 {
+      font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em;
+    }
+    .exchange-info {
+      font-size: 0.75rem; color: var(--text-muted);
+    }
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1rem; margin-bottom: 1rem;
+    }
+    .pricing-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem;
+    }
+    .pricing-title {
+      font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem;
+      padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+    }
+    .pricing-title.claude { color: var(--accent-claude); }
+    .pricing-title.openai { color: var(--accent-codex); }
+    .price-row {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 1rem; padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .price-row:last-child { border-bottom: none; }
+    .price-name { flex: 1; }
+    .price-name strong {
+      display: block; font-size: 0.85rem; color: var(--text);
+    }
+    .price-desc {
+      display: block; font-size: 0.7rem; color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+    .price-value { text-align: right; white-space: nowrap; }
+    .price-usd {
+      display: block; font-size: 0.85rem; font-weight: 600; color: var(--text);
+    }
+    .price-krw {
+      display: block; font-size: 0.7rem; color: var(--text-muted);
+      margin-top: 0.1rem;
+    }
+
     @media (max-width: 768px) {
       .hero h1 { font-size: 1.8rem; }
       .hero .stats { gap: 1rem; }
@@ -270,6 +392,12 @@ function buildHTML(data) {
 </div>
 
 <main>
+  ${renderPricingSection(pricing)}
+
+  <div class="section-title">
+    <h2>블로그 글 분석</h2>
+  </div>
+
   <div class="filter-bar">
     <button class="filter-btn active" onclick="filterArticles('all')">전체</button>
     <button class="filter-btn" onclick="filterArticles('claude')">Claude</button>
@@ -316,7 +444,13 @@ function filterArticles(source) {
 function build() {
   console.log("Building site...");
   const data = JSON.parse(fs.readFileSync(DATA_PATH, "utf-8"));
-  const html = buildHTML(data);
+  let pricing = null;
+  try {
+    pricing = JSON.parse(fs.readFileSync(PRICING_PATH, "utf-8"));
+  } catch {
+    console.log("  (no pricing data found, skipping pricing section)");
+  }
+  const html = buildHTML(data, pricing);
   fs.writeFileSync(OUTPUT_PATH, html);
   console.log(`Built site with ${data.articles.filter((a) => a.analyzed).length} articles → docs/index.html`);
 }

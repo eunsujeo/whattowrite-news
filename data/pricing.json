@@ -1,0 +1,90 @@
+{
+  "lastUpdated": "2026-04-10T08:55:42.178Z",
+  "exchangeRate": {
+    "usdToKrw": 1476.98,
+    "fetchedAt": "2026-04-10T08:55:42.174Z"
+  },
+  "subscriptions": {
+    "claude": [
+      {
+        "name": "Claude Free",
+        "price": 0,
+        "description": "기본 사용"
+      },
+      {
+        "name": "Claude Pro",
+        "price": 20,
+        "description": "개인용, 5배 사용량"
+      },
+      {
+        "name": "Claude Max (5x)",
+        "price": 100,
+        "description": "Pro의 5배 사용량"
+      },
+      {
+        "name": "Claude Max (20x)",
+        "price": 200,
+        "description": "Pro의 20배 사용량"
+      }
+    ],
+    "openai": [
+      {
+        "name": "ChatGPT Free",
+        "price": 0,
+        "description": "기본 사용"
+      },
+      {
+        "name": "ChatGPT Plus",
+        "price": 20,
+        "description": "GPT 고급 모델, Codex 접근"
+      },
+      {
+        "name": "ChatGPT Pro",
+        "price": 200,
+        "description": "무제한 사용, 최고 성능 모델"
+      }
+    ]
+  },
+  "apiPricing": {
+    "claude": [
+      {
+        "model": "Opus 4.6",
+        "input": 15,
+        "output": 75,
+        "unit": "per 1M tokens"
+      },
+      {
+        "model": "Sonnet 4.6",
+        "input": 3,
+        "output": 15,
+        "unit": "per 1M tokens"
+      },
+      {
+        "model": "Haiku 4.5",
+        "input": 1,
+        "output": 5,
+        "unit": "per 1M tokens"
+      }
+    ],
+    "openai": [
+      {
+        "model": "GPT-5 Codex",
+        "input": 2.5,
+        "output": 10,
+        "unit": "per 1M tokens"
+      },
+      {
+        "model": "GPT-5",
+        "input": 5,
+        "output": 20,
+        "unit": "per 1M tokens"
+      },
+      {
+        "model": "GPT-5 mini",
+        "input": 0.25,
+        "output": 1,
+        "unit": "per 1M tokens"
+      }
+    ]
+  }
+}

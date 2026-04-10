@@ -151,6 +151,56 @@
       50% { opacity: 0.6; }
     }
 
+    /* Pricing */
+    #pricing { margin-bottom: 3rem; }
+    .section-title {
+      display: flex; align-items: baseline; justify-content: space-between;
+      flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem; border-bottom: 1px solid var(--border);
+    }
+    .section-title h2 {
+      font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em;
+    }
+    .exchange-info {
+      font-size: 0.75rem; color: var(--text-muted);
+    }
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1rem; margin-bottom: 1rem;
+    }
+    .pricing-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem;
+    }
+    .pricing-title {
+      font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem;
+      padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+    }
+    .pricing-title.claude { color: var(--accent-claude); }
+    .pricing-title.openai { color: var(--accent-codex); }
+    .price-row {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 1rem; padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .price-row:last-child { border-bottom: none; }
+    .price-name { flex: 1; }
+    .price-name strong {
+      display: block; font-size: 0.85rem; color: var(--text);
+    }
+    .price-desc {
+      display: block; font-size: 0.7rem; color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+    .price-value { text-align: right; white-space: nowrap; }
+    .price-usd {
+      display: block; font-size: 0.85rem; font-weight: 600; color: var(--text);
+    }
+    .price-krw {
+      display: block; font-size: 0.7rem; color: var(--text-muted);
+      margin-top: 0.1rem;
+    }
+
     @media (max-width: 768px) {
       .hero h1 { font-size: 1.8rem; }
       .hero .stats { gap: 1rem; }
@@ -165,7 +215,7 @@
 <nav>
   <div class="nav-inner">
     <div class="logo">AI Coding Guide</div>
-    <div class="update-info">마지막 업데이트: 2026년 4월 10일 AM 03:27</div>
+    <div class="update-info">마지막 업데이트: 2026년 4월 10일 오후 12:27</div>
   </div>
 </nav>
 
@@ -189,6 +239,170 @@
 </div>
 
 <main>
+  
+  <section id="pricing">
+    <div class="section-title">
+      <h2>가격 정보</h2>
+      <div class="exchange-info">1 USD = ₩1,476.98 (2026년 4월 10일 기준)</div>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3 class="pricing-title claude">Claude 구독</h3>
+        
+    <div class="price-row">
+      <div class="price-name">
+        <strong>Claude Free</strong>
+        <span class="price-desc">기본 사용</span>
+      </div>
+      <div class="price-value">
+        <span class="price-usd">Free</span>
+        
+      </div>
+    </div>
+    <div class="price-row">
+      <div class="price-name">
+        <strong>Claude Pro</strong>
+        <span class="price-desc">개인용, 5배 사용량</span>
+      </div>
+      <div class="price-value">
+        <span class="price-usd">$20/월</span>
+        <span class="price-krw">₩29,540/월</span>
+      </div>
+    </div>
+    <div class="price-row">
+      <div class="price-name">
+        <strong>Claude Max (5x)</strong>
+        <span class="price-desc">Pro의 5배 사용량</span>
+      </div>
+      <div class="price-value">
+        <span class="price-usd">$100/월</span>
+        <span class="price-krw">₩147,698/월</span>
+      </div>
+    </div>
+    <div class="price-row">
+      <div class="price-name">
+        <strong>Claude Max (20x)</strong>
+        <span class="price-desc">Pro의 20배 사용량</span>
+      </div>
+      <div class="price-value">
+        <span class="price-usd">$200/월</span>
+        <span class="price-krw">₩295,396/월</span>
+      </div>
+    </div>
+      </div>
+      <div class="pricing-card">
+        <h3 class="pricing-title openai">OpenAI / ChatGPT 구독</h3>
+        
+    <div class="price-row">
+      <div class="price-name">
+        <strong>ChatGPT Free</strong>
+        <span class="price-desc">기본 사용</span>
+      </div>
+      <div class="price-value">
+        <span class="price-usd">Free</span>
+        
+      </div>
+    </div>
+    <div class="price-row">
+      <div class="price-name">
+        <strong>ChatGPT Plus</strong>
+        <span class="price-desc">GPT 고급 모델, Codex 접근</span>
+      </div>
+      <div class="price-value">
+        <span class="price-usd">$20/월</span>
+        <span class="price-krw">₩29,540/월</span>
+      </div>
+    </div>
+    <div class="price-row">
+      <div class="price-name">
+        <strong>ChatGPT Pro</strong>
+        <span class="price-desc">무제한 사용, 최고 성능 모델</span>
+      </div>
+      <div class="price-value">
+        <span class="price-usd">$200/월</span>
+        <span class="price-krw">₩295,396/월</span>
+      </div>
+    </div>
+      </div>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3 class="pricing-title claude">Claude API</h3>
+        
+    <div class="price-row">
+      <div class="price-name">
+        <strong>Opus 4.6</strong>
+        <span class="price-desc">per 1M tokens</span>
+      </div>
+      <div class="price-value">
+        <div class="price-usd">입력 $15 / 출력 $75</div>
+        <div class="price-krw">입력 ₩22,155 / 출력 ₩110,774</div>
+      </div>
+    </div>
+    <div class="price-row">
+      <div class="price-name">
+        <strong>Sonnet 4.6</strong>
+        <span class="price-desc">per 1M tokens</span>
+      </div>
+      <div class="price-value">
+        <div class="price-usd">입력 $3 / 출력 $15</div>
+        <div class="price-krw">입력 ₩4,431 / 출력 ₩22,155</div>
+      </div>
+    </div>
+    <div class="price-row">
+      <div class="price-name">
+        <strong>Haiku 4.5</strong>
+        <span class="price-desc">per 1M tokens</span>
+      </div>
+      <div class="price-value">
+        <div class="price-usd">입력 $1 / 출력 $5</div>
+        <div class="price-krw">입력 ₩1,477 / 출력 ₩7,385</div>
+      </div>
+    </div>
+      </div>
+      <div class="pricing-card">
+        <h3 class="pricing-title openai">OpenAI API</h3>
+        
+    <div class="price-row">
+      <div class="price-name">
+        <strong>GPT-5 Codex</strong>
+        <span class="price-desc">per 1M tokens</span>
+      </div>
+      <div class="price-value">
+        <div class="price-usd">입력 $2.5 / 출력 $10</div>
+        <div class="price-krw">입력 ₩3,692 / 출력 ₩14,770</div>
+      </div>
+    </div>
+    <div class="price-row">
+      <div class="price-name">
+        <strong>GPT-5</strong>
+        <span class="price-desc">per 1M tokens</span>
+      </div>
+      <div class="price-value">
+        <div class="price-usd">입력 $5 / 출력 $20</div>
+        <div class="price-krw">입력 ₩7,385 / 출력 ₩29,540</div>
+      </div>
+    </div>
+    <div class="price-row">
+      <div class="price-name">
+        <strong>GPT-5 mini</strong>
+        <span class="price-desc">per 1M tokens</span>
+      </div>
+      <div class="price-value">
+        <div class="price-usd">입력 $0.25 / 출력 $1</div>
+        <div class="price-krw">입력 ₩369 / 출력 ₩1,477</div>
+      </div>
+    </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-title">
+    <h2>블로그 글 분석</h2>
+  </div>
+
   <div class="filter-bar">
     <button class="filter-btn active" onclick="filterArticles('all')">전체</button>
     <button class="filter-btn" onclick="filterArticles('claude')">Claude</button>
