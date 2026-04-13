@@ -30,6 +30,28 @@ jobs:
       - name: Run crawler & build
         run: node scripts/run.js
 
+      - name: Check for unanalyzed articles
+        id: check
+        run: |
+          count=$(node -e "console.log(require('./data/articles.json').articles.filter(a=>!a.analyzed).length)")
+          echo "count=$count" >> $GITHUB_OUTPUT
+          echo "Unanalyzed: $count"
+
+      - name: Analyze with Claude Code
+        if: steps.check.outputs.count != '0'
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            data/articles.json에서 analyzed:false인 모든 글을 분석해줘.
+            각 글의 content 필드를 읽고, CLAUDE.md의 "분석 JSON 스키마"에 정의된
+            형식대로 analysis 객체(summary, keyFeatures, howToUse, useCases, tags,
+            difficulty, toolRecommendation)를 생성해서 해당 article에 넣어.
+            그리고 analyzed:true와 analyzedAt(현재 ISO 타임스탬프)도 설정해.
+            모든 글 처리가 끝나면 `npm run build`를 실행해 docs/index.html을 갱신해.
+            모든 필드는 한국어로 작성하고, 새 파일을 만들지 말고 data/articles.json만
+            수정해.
+
       - name: Commit updated data
         run: |
           git config user.name "github-actions[bot]"
