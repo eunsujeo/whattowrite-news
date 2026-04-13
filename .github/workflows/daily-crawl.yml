@@ -53,9 +53,13 @@ jobs:
             수정해.
 
       - name: Commit updated data
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          # claude-code-action이 checkout의 credential을 덮어쓰므로 재주입
+          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git
           git add data/articles.json docs/index.html
           git diff --staged --quiet || git commit -m "chore: daily crawl update $(date -u +%Y-%m-%d)"
           git push
