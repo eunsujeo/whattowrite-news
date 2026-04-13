@@ -15,6 +15,12 @@ const SOURCES = [
     listUrl: "https://developers.openai.com/blog/topic/codex",
     baseUrl: "https://developers.openai.com",
   },
+  {
+    id: "codex",
+    name: "OpenAI Developers Blog",
+    listUrl: "https://developers.openai.com/blog",
+    baseUrl: "https://developers.openai.com",
+  },
 ];
 
 const DATA_PATH = path.join(__dirname, "..", "data", "articles.json");
