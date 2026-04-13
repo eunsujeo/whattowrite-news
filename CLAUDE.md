@@ -20,10 +20,10 @@ AI 코딩 도구(Claude, Codex) 블로그를 매일 자동 크롤링하고 AI로
 ```
 scripts/
   crawl.js          # 블로그 크롤링 (새 글 감지 + 본문 + 날짜 추출)
-  analyze.js        # Claude API로 분석 (요약, 사용법, 추천 시나리오)
-  build.js          # 분석 데이터 → docs/index.html 생성
-  run.js            # crawl → analyze → build 전체 실행
-  manual-analyze.js # API 키 없이 수동 분석 데이터 적용
+  analyze.js        # (옵션) Claude API 분석 스크립트 — CI에서는 사용 안 함
+  build.js          # 분석 데이터 → docs/index.html 생성 (analyzed:true만 렌더)
+  run.js            # crawl → pricing → build (analyze 제외)
+  manual-analyze.js # 하드코딩된 분석 데이터 적용 (레거시)
 data/
   articles.json     # 크롤링 + 분석 데이터 (git 추적됨)
 docs/
@@ -34,10 +34,36 @@ docs/
 
 ```bash
 npm run crawl     # 새 글 크롤링만
-npm run analyze   # 미분석 글 AI 분석 (ANTHROPIC_API_KEY 필요)
 npm run build     # 사이트 빌드
-npm run run       # 전체 실행 (crawl → analyze → build)
+npm run run       # 전체 실행 (crawl → pricing → build)
 ```
+
+## 분석 워크플로우 (중요)
+
+**분석은 CI에서 자동 실행하지 않습니다.** Anthropic API 크레딧 소비를 피하기 위해 **로컬에서 Claude Code로 직접 수행**합니다.
+
+### 흐름
+1. GitHub Actions가 매일 자동 실행 → 새 글을 `analyzed:false`로 [data/articles.json](data/articles.json)에 저장, 커밋/푸시
+2. [build.js](scripts/build.js)는 `analyzed:true`인 글만 사이트에 노출 → 신규 글은 분석되기 전까지 숨김 상태
+3. 새 글이 쌓이면 로컬에서:
+   - `git pull`
+   - Claude Code에 "articles.json에서 analyzed:false인 글 분석해줘"라고 요청
+   - Claude Code가 각 글의 `content`를 읽고, 아래 스키마의 JSON을 생성해 articles.json에 write-back하며 `analyzed:true` + `analyzedAt` 설정
+   - `npm run build` → `git commit && git push`
+
+### 분석 JSON 스키마 (모든 필드 한국어)
+```
+analysis: {
+  summary: "3-4줄 핵심 요약",
+  keyFeatures: ["주요 기능/특징 3-5개"],
+  howToUse: "실제 사용법 구체적 설명 3-5줄",
+  useCases: ["구체적 활용 시나리오 3-4개"],
+  tags: ["관련 키워드 3-5개"],
+  difficulty: "초급" | "중급" | "고급",
+  toolRecommendation: "Claude" | "Codex" | "둘 다"
+}
+```
+상세 프롬프트는 [scripts/analyze.js](scripts/analyze.js)의 `ANALYZE_PROMPT` 참고.
 
 ## 크롤링 대상
 
@@ -63,4 +89,4 @@ npm run run       # 전체 실행 (crawl → analyze → build)
 
 ## 환경 변수
 
-- `ANTHROPIC_API_KEY` - Claude API 키 (analyze 시 필요, GitHub repo secret에 설정됨)
+- `ANTHROPIC_API_KEY` - [analyze.js](scripts/analyze.js) 로컬 실행 시에만 필요. CI/워크플로우에서는 사용하지 않음.
