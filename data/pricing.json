@@ -36,12 +36,17 @@
       {
         "name": "ChatGPT Plus",
         "price": 20,
-        "description": "GPT 고급 모델, Codex 접근"
+        "description": "GPT 고급 모델, Codex 기본 사용량 (1x)"
       },
       {
-        "name": "ChatGPT Pro",
+        "name": "ChatGPT Pro (10x)",
+        "price": 100,
+        "description": "Plus의 10x 사용량 (2026-05-31까지 프로모션)"
+      },
+      {
+        "name": "ChatGPT Pro (20x)",
         "price": 200,
-        "description": "무제한 사용, 최고 성능 모델"
+        "description": "Plus의 20x 사용량"
       }
     ]
   },
