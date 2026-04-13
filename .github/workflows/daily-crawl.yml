@@ -53,6 +53,10 @@ jobs:
             모든 필드는 한국어로 작성하고, 새 파일을 만들지 말고 data/articles.json만
             수정해.
 
+      - name: Rebuild site after analysis
+        if: steps.check.outputs.count != '0'
+        run: node scripts/build.js
+
       - name: Commit updated data
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
