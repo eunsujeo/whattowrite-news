@@ -140,10 +140,19 @@ function renderPricingSection(pricing) {
   </section>`;
 }
 
+// Parse Korean date "YYYY년 M월 D일" → comparable number YYYYMMDD, empty → 0 (oldest)
+function dateKey(article) {
+  const m = (article.date || "").match(/(\d{4})년\s*(\d{1,2})월\s*(\d{1,2})일/);
+  if (!m) return 0;
+  return Number(m[1]) * 10000 + Number(m[2]) * 100 + Number(m[3]);
+}
+
 function buildHTML(data, pricing) {
-  const claudeArticles = data.articles.filter((a) => a.source === "claude" && a.analyzed);
-  const codexArticles = data.articles.filter((a) => a.source === "codex" && a.analyzed);
-  const allAnalyzed = data.articles.filter((a) => a.analyzed);
+  const byDateDesc = (a, b) => dateKey(b) - dateKey(a);
+  const analyzed = data.articles.filter((a) => a.analyzed).sort(byDateDesc);
+  const claudeArticles = analyzed.filter((a) => a.source === "claude");
+  const codexArticles = analyzed.filter((a) => a.source === "codex");
+  const allAnalyzed = analyzed;
 
   const lastUpdated = data.lastUpdated
     ? new Date(data.lastUpdated).toLocaleDateString("ko-KR", {
