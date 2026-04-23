@@ -1,6 +1,41 @@
 {
-  "lastUpdated": "2026-04-21T02:11:21.755Z",
+  "lastUpdated": "2026-04-23T02:13:32.037Z",
   "articles": [
+    {
+      "title": "Building agents that reach production systems with MCP",
+      "date": "2026년 4월 22일",
+      "url": "https://claude.com/blog/building-agents-that-reach-production-systems-with-mcp",
+      "source": "claude",
+      "content": "Building agents that reach production systems with MCPCategoryAgentsProductClaude PlatformDateApril 22, 2026Reading time5minShareCopy linkhttps://claude.com/blog/building-agents-that-reach-production-systems-with-mcpAgents are only as useful as the systems they can reach. Teams tend to converge on three approaches for connecting them to external systems—direct API calls, CLIs, and MCP. This post lays out where each fits, why production agents tend to land on MCP, and the patterns for building those integrations effectively.Connecting agents to external systemsWe generally see three paths for connecting agents to external systems: direct API calls, CLIs, and MCP. Each makes sense somewhere, depending on what you're building. The key distinction is whether there's a common layer between agents and services, and how far that layer reaches.Direct API callsThe agent calls your API directly—either by writing code that issues HTTP requests inside a code-execution sandbox, or through a generic function-calling tool. This is where most teams start, and it works fine for one agent talking to one service, or a small number of integrations that don't need to be reused across agent platforms.The challenges start to hit at scale. With no common layer between agents and services, each agent–service pair becomes a bespoke integration with its own auth handling, tool descriptions, and edge cases—the M×N integration problem.Command-line interface (CLI)The agent runs your command-line tool in a shell. This is fast, lightweight, and leans on pre-existing tooling. It works great for local environments and sandboxed containers—anywhere there's a filesystem and a shell. This provides a common layer, but it’s thin. CLIs hit hard limits reaching mobile, web, or cloud-hosted platforms that don't expose a container, and auth is handled by the CLI's own mechanism—usually a credential file on disk. This is best suited to quick, permissive integrations in local environments.Model Context Protocol (MCP)MCP provides the common layer as a protocol. The agent connects to a server that exposes your system's capabilities, with auth, discovery, and rich semantics standardized. One remote server reaches any compatible client (Claude, ChatGPT, Cursor, VS Code, and more), in any deployment environment.It requires a little bit more upfront investment. The return is that the integration is portable, and provides the semantics needed for a feature-rich agent integration.Production agents run in the cloudProduction agents increasingly run in the cloud, so they can scale and operate continuously. The systems they need to reach are cloud-hosted too: where your data lives, work is tracked, and your infrastructure runs. Often these systems are remote and behind auth, where MCP provides the common layer. We’re already seeing this in adoption. The MCP SDKs recently surpassed 300 million downloads a month, up from 100 million at the start of the year, with strong adoption across enterprises and popular agentic platforms. Millions of people use MCP with Claude every day, and the protocol underpins much of what we've shipped recently, including Claude Cowork, Claude Managed Agents, and channels in Claude Code. ‍As MCP continues to support production agentic systems, we’re sharing patterns for building these integrations well: from building advanced servers to context-efficient clients, and where skills complement the protocol. Building effective MCP serversWe have over 200 MCP servers in our directory, used by millions of people every day. From working closely with enterprises and developers building on the protocol, we’ve spotted a handful of design patterns that determine how reliably agents can use a server.Build remote servers for maximum reachA remote server is what gives you distribution—it's the only configuration that runs across web, mobile, and cloud-hosted agents, and it's what every major client is optimized to consume. Build remote servers so agents can use your system wherever they run. Group tools around intent, not endpointsFewer, well-described tools consistently outperform exhaustive API mirrors. Don't wrap your API into an MCP server one-to-one—group tools around intent, so the agent can accomplish a task in a couple of calls instead of stitching many primitives together. A single create_issue_from_thread tool beats get_thread + parse_messages + create_issue + link_attachment. See writing effective tools for agents to learn more about the full pattern.Design for code orchestration when your surface is largeIf your service requires hundreds of distinct operations, such as Cloudflare, AWS, or Kubernetes, an intent-grouped toolset likely won't cover it. Instead, expose a thin tool surface that accepts code: the agent writes a short script, your server runs it in a sandbox against your API, and only the result returns. Cloudflare's MCP server is the reference example—two tools (search and execute) cover ~2,500 endpoints in roughly 1K tokens.Ship rich semantics where they helpMCP Apps is the first official protocol extension and lets a tool return an interactive interface, such as a chart, form, or dashboard, all rendered inline in the chat interface. Servers that ship MCP apps tend to see meaningfully higher adoption and retention than those that return text alone. Use it to put your product's UI in front of agents or end-users at the moment it matters—the extension is supported in Claude.ai, Claude Cowork, and many other top AI tools.‍Elicitation lets your server pause mid-tool call to ask the user for input. Form mode sends a simple schema and the client renders a native form—use it to request a missing parameter, confirm a destructive action, or disambiguate options. URL mode hands the user to a browser—use it to complete downstream OAuth, take a payment, or collect any credential that should never transit the MCP client. Both keep the user in the flow instead of sending them to a settings page. Form mode is supported broadly; URL mode is supported in Claude Code, with more clients in progress.Lean on standardized auth Standardized auth makes MCP practical for cloud-hosted agents. If your server requires OAuth, the latest MCP spec supports CIMD (Client ID Metadata Documents) for client registration—it gives users a fast first-time auth flow and far fewer surprise re-auth prompts. This is our recommended approach for auth, the capability is supported in MCP SDKs, Claude.ai, and Claude Code, and is being broadly adopted across the industry.Once a user has authorized, the next question is how a cloud-hosted agent holds and reuses those tokens at runtime. Vaults in Claude Managed Agents covers this: register a user's OAuth tokens once, reference the vault by ID at session creation, and the platform injects the right credentials into each MCP connection and refreshes them on your behalf—no secret store to build, no tokens to pass around per call.Making MCP clients more context-efficientMCP standardizes how AI agents (clients) connect to and work with tools and data sources they need (servers). The server securely exposes a range of capabilities, while the client orchestrates them and manages context. If you’re building an MCP client, make it context-efficient with patterns for progressive disclosure.Load tool definitions on demand with tool searchTool search defers loading all tools into context, rather than loading them upfront. This allows the agent to search the catalog at runtime, pulling in the relevant tools when needed. In our testing, tool search tends to cut tool-definition tokens by 85%+ while maintaining high selection accuracy. Reducing context usage with tool search. Source: advanced tool useProcess tool results in code with programmatic tool callingProgrammatic tool calling processes tool results in a code-execution sandbox, rather than returning them raw to the model. This lets the agent loop, filter, and aggregate across calls in code, with only the final output reaching ",
+      "analyzed": true,
+      "analyzedAt": "2026-04-23T00:00:00.000Z",
+      "analysis": {
+        "summary": "에이전트를 외부 시스템에 연결하는 세 가지 방법(직접 API 호출, CLI, MCP)을 비교하고 프로덕션 환경에서 MCP가 표준이 된 이유를 설명합니다. 효과적인 MCP 서버 구축 패턴(원격 서버, 의도 중심 툴 그룹화, 코드 오케스트레이션, 풍부한 시맨틱, 표준화된 인증)과 컨텍스트 효율적인 MCP 클라이언트 설계법을 상세히 다룹니다. MCP SDK는 월 3억 회 다운로드를 돌파했으며 Claude·ChatGPT·Cursor 등 주요 AI 플랫폼에서 광범위하게 채택되고 있습니다.",
+        "keyFeatures": [
+          "세 가지 연결 방식 비교: 직접 API 호출(M×N 통합 문제), CLI(로컬 환경 적합), MCP(클라우드 프로덕션 표준)",
+          "의도 중심 툴 그룹화: API 엔드포인트를 일대일 노출하지 않고 에이전트가 2~3번 호출로 작업을 완료하도록 상위 레벨 툴 설계",
+          "코드 오케스트레이션: 수천 개 엔드포인트를 코드 실행 툴 2개로 커버하는 Cloudflare 방식(search + execute로 약 2,500개 엔드포인트 처리)",
+          "MCP Apps·Elicitation: 차트·폼·대시보드를 대화 안에 인라인 렌더링하고, OAuth·결제 등 사용자 개입이 필요한 흐름을 끊김 없이 처리",
+          "툴 검색(Tool Search): 런타임에 필요한 툴만 컨텍스트에 로드해 툴 정의 토큰을 85%+ 절감"
+        ],
+        "howToUse": "MCP 서버를 구축할 때는 먼저 원격 서버로 배포해 웹·모바일·클라우드 에이전트 모두에서 접근 가능하게 하세요. API 엔드포인트를 그대로 노출하지 말고 작업 의도에 맞게 툴을 그룹화해 호출 횟수를 최소화하세요. 수백 개 작업이 필요한 대규모 서비스라면 코드 실행 툴 2개로 전체를 커버하는 코드 오케스트레이션 방식을 고려하세요. 사용자 인증에는 CIMD가 포함된 OAuth를 활용하고 Claude Managed Agents의 Vault로 토큰 관리를 자동화하세요. MCP 클라이언트를 구축할 경우 툴 검색과 프로그래밍 방식 툴 호출을 활용해 컨텍스트 사용량을 줄이세요.",
+        "useCases": [
+          "기업 SaaS 플랫폼이 Claude·ChatGPT·Cursor 등 여러 AI 클라이언트에 단일 원격 MCP 서버로 서비스를 노출하는 경우",
+          "AWS·Cloudflare처럼 수천 개 API 엔드포인트를 보유한 서비스에서 코드 오케스트레이션으로 최소한의 툴로 에이전트 통합을 구현",
+          "결제·OAuth·매개변수 확인 등 에이전트 작업 도중 사용자 개입이 필요한 복잡한 워크플로우 구축",
+          "수백 개 툴이 등록된 AI 플랫폼에서 툴 검색으로 토큰 효율을 유지하면서 정확한 툴 선택 구현"
+        ],
+        "tags": [
+          "MCP",
+          "에이전트 통합",
+          "프로덕션 배포",
+          "MCP 서버 설계",
+          "컨텍스트 최적화"
+        ],
+        "difficulty": "고급",
+        "toolRecommendation": "Claude"
+      }
+    },
     {
       "title": "Meet the winners of our Built with Opus 4.6 Claude Code hackathon",
       "date": "2026년 4월 20일",
@@ -25,7 +60,13 @@
           "교육 현장에서 코딩 개념을 시각적으로 학습할 수 있는 블록 기반 IDE 및 티칭 엔진 개발",
           "공공 인프라 현황을 영상 분석과 경제성 평가로 자동화해 행정 의사결정 지원"
         ],
-        "tags": ["Claude Code", "해커톤", "비개발자 코딩", "Opus 4.6", "AI 에이전트"],
+        "tags": [
+          "Claude Code",
+          "해커톤",
+          "비개발자 코딩",
+          "Opus 4.6",
+          "AI 에이전트"
+        ],
         "difficulty": "초급",
         "toolRecommendation": "Claude"
       }
