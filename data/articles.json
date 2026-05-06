@@ -1,6 +1,41 @@
 {
-  "lastUpdated": "2026-05-02T02:25:32.264Z",
+  "lastUpdated": "2026-05-06T02:31:27.635Z",
   "articles": [
+    {
+      "title": "Deploying Claude across financial services",
+      "date": "2026년 5월 5일",
+      "url": "https://claude.com/blog/deploying-claude-across-financial-services",
+      "source": "claude",
+      "content": "Deploying Claude across financial servicesIn this guide, we share how financial services firms are using Claude to compress their most time-consuming work, including customer examples and a practical adoption roadmap.CategoryEnterprise AIProductClaude CoworkClaude EnterpriseDateMay 5, 2026Reading time5minShareCopy linkhttps://claude.com/blog/deploying-claude-across-financial-servicesAcross the financial services industry, firms are running Claude in research, deal work, underwriting, claims, model reviews, and month-end close. Most are running more than one Claude product to do it: Claude for chat and research, Claude Cowork for project-level work that spans files and apps, Claude Code for quantitative and engineering teams, Claude for Microsoft 365 for the hours spent in Excel, PowerPoint, Word, and Outlook, and the Claude Platform and Claude Managed Agents for building and deploying custom applications and agents.To help leaders chart their rollout, we put together a practical deployment guide for financial services. It covers each product, the pre-built finance agent reference architectures Anthropic has shipped, and a three-phase adoption playbook firms can run against today.In this guide, we share:A product matrix for when to use Claude Chat, Cowork, Code, the Microsoft 365 add-ins, the Claude Platform, and Claude Managed Agents10 pre-built finance agent templates, including pitch builders, market researchers, KYC screeners, general ledger reconcilers, and month-end closersCustomer stories from AIG, Commonwealth Bank of Australia, IG Group, and Moody'sA three-phase adoption playbook—foundation, pilot, scale—with the actions and pro-tips that work at each stageUse cases organized by sector, across investment banking and private equity, wealth and asset management, and retail and commercial bankingThe guide is built for AI leaders deciding where Claude fits inside their firm and the engineers who will roll it out.Check it out, here.Get started with Claude for Financial Services today.‍No items found.PrevPrev0/5NextNexteBookFAQNo items found.Related postsExplore more product news and best practices for teams building with Claude.Apr 30, 2026How Kepler built verifiable AI for financial services with ClaudeEnterprise AIHow Kepler built verifiable AI for financial services with ClaudeHow Kepler built verifiable AI for financial services with ClaudeHow Kepler built verifiable AI for financial services with ClaudeHow Kepler built verifiable AI for financial services with ClaudeMar 11, 2026Advancing Claude for Excel and PowerPointEnterprise AIAdvancing Claude for Excel and PowerPointAdvancing Claude for Excel and PowerPointAdvancing Claude for Excel and PowerPointAdvancing Claude for Excel and PowerPointApr 8, 2026How Carta Healthcare gets AI to reason like a clinical abstractorEnterprise AIHow Carta Healthcare gets AI to reason like a clinical abstractorHow Carta Healthcare gets AI to reason like a clinical abstractorHow Carta Healthcare gets AI to reason like a clinical abstractorHow Carta Healthcare gets AI to reason like a clinical abstractorMar 13, 20261M context is now generally available for Opus 4.6 and Sonnet 4.6Product announcements1M context is now generally available for Opus 4.6 and Sonnet 4.61M context is now generally available for Opus 4.6 and Sonnet 4.61M context is now generally available for Opus 4.6 and Sonnet 4.61M context is now generally available for Opus 4.6 and Sonnet 4.6Transform how your organization operates with ClaudeSee pricingSee pricingSee pricingContact salesContact salesContact salesGet the developer newsletterProduct updates, how-tos, community spotlights, and more. Delivered monthly to your inbox.SubscribeSubscribePlease provide your email address if you'd like to receive our monthly developer newsletter. You can unsubscribe at any time.Thank you! You’re subscribed.Sorry, there was a problem with your submission, please try again later.",
+      "analyzed": true,
+      "analyzedAt": "2026-05-06T00:00:00.000Z",
+      "analysis": {
+        "summary": "금융 서비스 기업이 Claude를 활용해 리서치, 딜 업무, 인수심사, 청구, 모델 검토, 월말 마감 등 핵심 업무를 가속화하는 방법을 소개하는 실전 배포 가이드. Claude Chat·Cowork·Code·Microsoft 365 부가기능·플랫폼·Managed Agents 등 제품별 활용 매트릭스와 함께 AIG, 호주 연방은행 등 4개 금융사 도입 사례 및 재단·파일럿·확장의 3단계 로드맵을 제공한다.",
+        "keyFeatures": [
+          "Claude 전 제품군(Chat, Cowork, Code, M365 부가기능, Platform, Managed Agents)의 금융업 적용 매트릭스 제공",
+          "피치북 빌더·KYC 스크리너·총계정원장 조정·월말 마감 등 10개 사전 제작 금융 에이전트 템플릿 수록",
+          "AIG, 호주 연방은행(CBA), IG 그룹, Moody's 실제 도입 사례 공개",
+          "재단(Foundation) → 파일럿(Pilot) → 확장(Scale) 3단계 도입 플레이북 및 단계별 실행 팁",
+          "투자은행·PE, 자산운용, 리테일·기업금융 등 섹터별 주요 유스케이스 정리"
+        ],
+        "howToUse": "금융사 AI 리더와 엔지니어를 위한 가이드를 따라 제품 선택부터 전사 배포까지 단계적으로 진행한다. 먼저 제품 매트릭스를 참고해 팀별 업무에 맞는 Claude 제품을 선택하고, 10개의 사전 제작 금융 에이전트 템플릿 중 적합한 것을 골라 파일럿을 시작한다. 이후 재단 → 파일럿 → 확장의 3단계 플레이북에 따라 조직 전반으로 확산하며, 각 단계의 실행 팁을 활용해 리스크를 최소화하고 ROI를 극대화한다.",
+        "useCases": [
+          "투자은행·PE팀의 피치북 자동 생성, 시장 조사, KYC 심사 자동화",
+          "자산운용사의 리서치 보고서 작성 및 모델 검토 가속화",
+          "리테일·기업금융의 총계정원장 조정 및 월말 마감 자동화",
+          "규정 준수(Compliance) 및 클레임 처리 워크플로우 효율화"
+        ],
+        "tags": [
+          "금융 서비스",
+          "엔터프라이즈 AI",
+          "에이전트",
+          "Claude Cowork",
+          "배포 가이드"
+        ],
+        "difficulty": "중급",
+        "toolRecommendation": "Claude"
+      }
+    },
     {
       "title": "How a non-technical project manager built and shipped a stress management app with Claude Code in six weeks",
       "date": "2026년 5월 1일",
