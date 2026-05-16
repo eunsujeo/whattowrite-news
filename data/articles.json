@@ -1,6 +1,41 @@
 {
-  "lastUpdated": "2026-05-15T02:47:00.954Z",
+  "lastUpdated": "2026-05-16T02:35:53.008Z",
   "articles": [
+    {
+      "title": "Deploying Claude across the legal industry",
+      "date": "2026년 5월 15일",
+      "url": "https://claude.com/blog/deploying-claude-across-the-legal-industry",
+      "source": "claude",
+      "content": "Deploying Claude across the legal industryWe share how legal professionals are using Claude to accelerate their most tedious workflows, covering when to use what product, new connectors, practice-area plugins, and a three-phase adoption roadmap.CategoryEnterprise AIProductClaude CoworkDateMay 15, 2026Reading time5minShareCopy linkhttps://claude.com/blog/deploying-claude-across-the-legal-industryA 2026 FTI Consulting / Relativity General Counsel Report found that 87% of general counsel now report generative AI use within their teams, up from 44% the prior year and just 20% in 2023. The work is getting more demanding: matters are more complex and clients expect faster turnaround times. The firms and legal departments pulling ahead are the ones embedding agentic AI into how their lawyers actually practice.Across the industry, legal teams are running Claude in contract review and redlining, M&A diligence, privacy impact assessments, regulatory monitoring, litigation prep, and outside counsel oversight. Most are running more than one Claude product to do it:Chat for chat and research;Claude Cowork for matter-level work that spans files and apps;Claude for Microsoft 365 for the hours spent in Word, Excel, PowerPoint, and Outlook;Claude Platform for building and deploying custom legal applications.To help leaders chart their rollout, we put together a practical deployment guide for the legal industry. It covers each Claude product, the connectors and practice-area plugins purpose-built for legal work, and a three-phase adoption plan teams can run today.In this guide, we share:A product matrix for when to use Chat, Claude Cowork, the Claude Microsoft 365 add-ins, and Claude PlatformThe connectors, skills, subagents, and plugins that customize Claude to a firm or in-house team’s playbooks, precedent, and house style12 pre-built practice-area plugins spanning Commercial, Corporate, Employment, Privacy, Product, Regulatory, AI Governance, IP, and Litigation workUse cases organized across in-house departments, transactional practice, litigation and disputes, and compliance and regulatoryHow Anthropic's own legal team uses Claude to accelerate their most tedious processes, like contract redlining and marketing content reviewsAnswers to the questions CIOs and IT leaders ask about hosting, retention, privilege protection, SSO, and auditCheck it out, here.Get started with Claude for the legal industry.No items found.PrevPrev0/5NextNexteBookFAQNo items found.Related postsExplore more product news and best practices for teams building with Claude.May 14, 2026How Claude Code works in large codebases: Best practices and where to startEnterprise AIHow Claude Code works in large codebases: Best practices and where to startHow Claude Code works in large codebases: Best practices and where to startHow Claude Code works in large codebases: Best practices and where to startHow Claude Code works in large codebases: Best practices and where to startDec 8, 2025How Anthropic's legal team cut review times from days to hours with ClaudeEnterprise AIHow Anthropic's legal team cut review times from days to hours with ClaudeHow Anthropic's legal team cut review times from days to hours with ClaudeHow Anthropic's legal team cut review times from days to hours with ClaudeHow Anthropic's legal team cut review times from days to hours with ClaudeMay 5, 2026Deploying Claude across financial servicesEnterprise AIDeploying Claude across financial servicesDeploying Claude across financial servicesDeploying Claude across financial servicesDeploying Claude across financial servicesApr 30, 2026How Kepler built verifiable AI for financial services with ClaudeEnterprise AIHow Kepler built verifiable AI for financial services with ClaudeHow Kepler built verifiable AI for financial services with ClaudeHow Kepler built verifiable AI for financial services with ClaudeHow Kepler built verifiable AI for financial services with ClaudeTransform how your organization operates with ClaudeSee pricingSee pricingSee pricingContact salesContact salesContact salesGet the developer newsletterProduct updates, how-tos, community spotlights, and more. Delivered monthly to your inbox.SubscribeSubscribePlease provide your email address if you'd like to receive our monthly developer newsletter. You can unsubscribe at any time.Thank you! You’re subscribed.Sorry, there was a problem with your submission, please try again later.",
+      "analyzed": true,
+      "analyzedAt": "2026-05-16T00:00:00.000Z",
+      "analysis": {
+        "summary": "법률 업계를 위한 Claude 배포 실전 플레이북. 2026 FTI 컨설팅/Relativity 조사에 따르면 87%의 법무총괄(GC)이 팀 내 생성형 AI 활용을 보고하며, 계약 검토·M&A 실사·개인정보 영향평가·규제 모니터링·소송 준비 등 핵심 법률 업무에 Claude가 광범위하게 활용되고 있다. Chat·Cowork·Microsoft 365 부가기능·Platform 4가지 제품별 적용 매트릭스, 12개 실무 특화 플러그인, 3단계 도입 로드맵, CIO·IT 리더를 위한 FAQ가 담긴 실전 가이드가 공개됐다.",
+        "keyFeatures": [
+          "법률 업계 전용 제품 매트릭스: Claude Chat(리서치)·Cowork(사안별 문서 작업)·Microsoft 365(Word·Excel·Outlook)·Platform(커스텀 앱 개발) 활용 시점 안내",
+          "상업·기업·고용·개인정보·제품·규제·AI 거버넌스·IP·소송 분야를 포괄하는 12개 실무 특화 플러그인",
+          "계약 레드라인·M&A 실사·규제 모니터링·소송 준비·외부 고문사 감독 등 핵심 법률 워크플로우 자동화",
+          "3단계 도입 로드맵과 호스팅·데이터 보존·권한·SSO·감사에 관한 CIO·IT 리더 대상 FAQ 포함",
+          "Anthropic 법무팀의 계약 레드라인·마케팅 콘텐츠 검토 자체 활용 사례 공개"
+        ],
+        "howToUse": "가이드를 참고해 법률팀 업무 유형(사내 법무·거래·소송·컴플라이언스)에 맞는 Claude 제품을 선택한다. 일상적 리서치에는 Chat, 다수 파일에 걸친 사안 단위 작업에는 Cowork, Word·Excel·Outlook 문서 검토에는 Microsoft 365 부가기능, 커스텀 법률 애플리케이션 개발에는 Platform을 활용한다. 계약 비교·규제 모니터링 등 실무 특화 플러그인을 설치하고, 3단계 로드맵(파일럿 → 확장 → 전사 배포)에 따라 점진적으로 도입한다.",
+        "useCases": [
+          "사내 법무팀이 계약 레드라인·마케팅 콘텐츠 검토·규제 모니터링을 Claude로 자동화하여 검토 시간 단축",
+          "M&A 딜팀이 대규모 실사 서류를 Claude Cowork에서 일괄 분석해 처리 속도 향상",
+          "로펌이 소송 준비 및 외부 고문사 감독에 Claude Platform 기반 커스텀 도구를 구축·활용",
+          "개인정보·AI 거버넌스 팀이 전용 플러그인으로 규제 준수 평가 및 이사회 보고서 작성 자동화"
+        ],
+        "tags": [
+          "법률 AI",
+          "엔터프라이즈",
+          "계약 관리",
+          "Claude Cowork",
+          "배포 가이드"
+        ],
+        "difficulty": "중급",
+        "toolRecommendation": "Claude"
+      }
+    },
     {
       "title": "The founder's playbook: Building an AI-native startup",
       "date": "2026년 5월 14일",
@@ -25,7 +60,13 @@
           "에이전틱 워크플로우로 운영 업무를 자동화해 인력 확장 없이 스케일업 달성",
           "단계별 AI 제품 전략으로 스타트업 팀의 핵심 업무 집중력 유지"
         ],
-        "tags": ["AI 스타트업", "창업 플레이북", "Claude Code", "MVP 개발", "스타트업 자동화"],
+        "tags": [
+          "AI 스타트업",
+          "창업 플레이북",
+          "Claude Code",
+          "MVP 개발",
+          "스타트업 자동화"
+        ],
         "difficulty": "중급",
         "toolRecommendation": "Claude"
       }
@@ -54,7 +95,13 @@
           "플러그인으로 AI 코딩 베스트 프랙티스를 수천 명 개발자 조직 전체에 배포",
           "MCP 서버로 내부 분석 플랫폼, 티켓 시스템, 문서를 Claude 워크플로우에 통합"
         ],
-        "tags": ["Claude Code", "대규모 코드베이스", "엔터프라이즈 AI", "CLAUDE.md", "MCP 서버"],
+        "tags": [
+          "Claude Code",
+          "대규모 코드베이스",
+          "엔터프라이즈 AI",
+          "CLAUDE.md",
+          "MCP 서버"
+        ],
         "difficulty": "고급",
         "toolRecommendation": "Claude"
       }
