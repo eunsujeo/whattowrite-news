@@ -1,6 +1,41 @@
 {
-  "lastUpdated": "2026-05-23T02:40:01.265Z",
+  "lastUpdated": "2026-05-27T03:24:52.775Z",
   "articles": [
+    {
+      "title": "Code w/ Claude London 2026: Rethinking how we build",
+      "date": "2026년 5월 26일",
+      "url": "https://claude.com/blog/code-w-claude-london-2026-rethinking-how-we-build",
+      "source": "claude",
+      "content": "Code w/ Claude London 2026: Rethinking how we buildCouldn't make it to London? Keynotes and breakout sessions are now live.CategoryProduct announcementsProductClaude CodeClaude PlatformDateMay 26, 2026Reading time5minShareCopy linkhttps://claude.com/blog/code-w-claude-london-2026-rethinking-how-we-buildThis week in London, we brought Code w/ Claude to Europe. The event brought together builders, developers, and founders for two days of keynotes, breakout sessions, and workshops with the teams building Claude.Cat Wu, Head of Product, Claude Code, chats with an attendee between sessions. Boris Cherny, Head of Claude Code, kicked off the keynote by describing the first time he felt the “magic” of coding. In secondary school, he wrote TI-83 programs that solved his math homework and tests, and taught himself HTML to make his eBay listings for Pokémon cards sell better. He learned by tinkering, and when something ran, it was exciting.Somewhere along the way, he suggested, programming got complicated. Compilers, typecheckers, build systems, and each layer pushed the distance between \"I have an idea\" and \"it runs\" a little further out. With agents, that distance is collapsing again: you describe a problem, and the program shows up. It's the calculator feeling, except the calculator can write a distributed system.From workshops highlighting how to go beyond the basics with Claude Code to optimizing thinking budgets and effort levels across our models, we demonstrated how Anthropic and customers like Spotify, Base44, and Legora are already recapturing this experience.  What was announcedKatelyn Lesse, Head of Engineering, Claude Developer Platform, and Angela Jiang, Head of Product, Claude Developer Platform, demo some of our new Claude Managed Agents features during Code w/ Claude London. Announced at the conference, Claude Managed Agents can now operate in a sandbox you control and connect to your private Model Context Protocol (MCP) servers. Now both the environment where an agent executes tools and the services it reaches run within the established boundaries of your enterprise. These two new capabilities are available on the Claude Platform:Self-hosted sandboxes (public beta). Tool execution moves to an environment you configure—your own infrastructure or a managed provider like Cloudflare, Daytona, Modal, or Vercel—while the agent loop that handles orchestration, context management, and error recovery stays on Anthropic's infrastructure. Your network policies, audit logging, and security tooling apply, files and repositories don't leave your perimeter, and you control compute sizing and the runtime image for compute-heavy work.MCP tunnels (research preview). Your agents reach MCP servers inside your private network without exposing them to the public internet. A lightweight gateway you deploy makes a single outbound connection: no inbound firewall rules, no public endpoints, and traffic encrypted end to end. MCP tunnels are supported in Managed Agents and the Messages API, and are managed from the Claude Console by organization admins.Teams including Amplitude, Clay, and Rogo are already building on Managed Agents with self-hosted sandboxes. To get started, explore the docs, follow our cookbooks, or request access to MCP tunnels.In case you missed itLisa Crofoot, Research Product Manager, presents during the Code w/ Claude London keynote. If you missed the livestream, check our keynote and breakout session recordings.Code w/ Claude heads to Tokyo next (June 5–6). All Day 1 keynotes and breakout sessions will be streamed live.Stay tuned for technical tutorials, guides, and customer stories inspired by our talks.No items found.PrevPrev0/5NextNexteBookFAQNo items found.Related postsExplore more product news and best practices for teams building with Claude.May 19, 2026New in Claude Managed Agents: self-hosted sandboxes and MCP tunnelsProduct announcementsNew in Claude Managed Agents: self-hosted sandboxes and MCP tunnelsNew in Claude Managed Agents: self-hosted sandboxes and MCP tunnelsNew in Claude Managed Agents: self-hosted sandboxes and MCP tunnelsNew in Claude Managed Agents: self-hosted sandboxes and MCP tunnelsMay 12, 2026Code w/ Claude SF 2026 recap: Building on the AI exponential Product announcementsCode w/ Claude SF 2026 recap: Building on the AI exponential Code w/ Claude SF 2026 recap: Building on the AI exponential Code w/ Claude SF 2026 recap: Building on the AI exponential Code w/ Claude SF 2026 recap: Building on the AI exponential May 12, 2026Claude for the legal industryProduct announcementsClaude for the legal industryClaude for the legal industryClaude for the legal industryClaude for the legal industryMay 11, 2026Introducing the Claude Platform on AWSProduct announcementsIntroducing the Claude Platform on AWSIntroducing the Claude Platform on AWSIntroducing the Claude Platform on AWSIntroducing the Claude Platform on AWSTransform how your organization operates with ClaudeSee pricingSee pricingSee pricingContact salesContact salesContact salesGet the developer newsletterProduct updates, how-tos, community spotlights, and more. Delivered monthly to your inbox.SubscribeSubscribePlease provide your email address if you'd like to receive our monthly developer newsletter. You can unsubscribe at any time.Thank you! You’re subscribed.Sorry, there was a problem with your submission, please try again later.",
+      "analyzed": true,
+      "analyzedAt": "2026-05-27T06:00:00.000Z",
+      "analysis": {
+        "summary": "런던에서 열린 Code w/ Claude 2026 행사에서 Boris Cherny(Claude Code 책임자)가 AI 에이전트가 '아이디어→실행' 사이의 거리를 다시 좁히고 있다고 선언했다. Anthropic은 Claude Managed Agents의 두 가지 새 기능—자체 호스팅 샌드박스(퍼블릭 베타)와 MCP 터널(리서치 프리뷰)—을 발표해 기업이 보안 경계 안에서 에이전트를 안전하게 운영할 수 있게 했다. Amplitude, Clay, Rogo 등이 이미 자체 호스팅 샌드박스로 Managed Agents를 구축 중이며, 다음 행사는 도쿄(6월 5~6일)에서 열린다.",
+        "keyFeatures": [
+          "자체 호스팅 샌드박스(퍼블릭 베타): 도구 실행을 자체 인프라(Cloudflare·Daytona·Modal·Vercel)로 이전하고 에이전트 오케스트레이션은 Anthropic 인프라에서 유지",
+          "MCP 터널(리서치 프리뷰): 인바운드 방화벽 규칙이나 공개 엔드포인트 없이 프라이빗 네트워크 내 MCP 서버에 종단 간 암호화로 안전 연결",
+          "Boris Cherny 키노트: 컴파일러·빌드 시스템으로 늘어난 '아이디어→실행' 거리를 에이전트가 다시 좁히는 패러다임 전환 제시",
+          "Spotify, Base44, Legora 등 고객사 참여 세션과 모델 사고력 예산 최적화 워크샵 진행",
+          "도쿄 Code w/ Claude(6월 5~6일) 예정, Day 1 전체 라이브스트리밍 지원"
+        ],
+        "howToUse": "자체 호스팅 샌드박스는 Claude 플랫폼 공식 문서와 쿡북을 통해 시작할 수 있으며, Cloudflare·Daytona·Modal·Vercel 중 원하는 컴퓨팅 환경을 설정하면 된다. MCP 터널은 리서치 프리뷰 단계로 Claude 콘솔에서 조직 관리자가 접근 신청을 통해 이용할 수 있다. 두 기능 모두 Managed Agents와 Messages API에서 지원되며, 경량 게이트웨이를 사내에 배포하면 단일 아웃바운드 연결만으로 내부 MCP 서버와 연결된다. 기업은 자체 네트워크 정책·감사 로깅·보안 도구를 그대로 유지하면서 에이전트를 운영할 수 있다.",
+        "useCases": [
+          "보안 규정이 엄격한 기업이 자체 인프라에서 에이전트 도구 실행을 처리해 코드·파일이 사내 밖으로 유출되지 않도록 관리",
+          "프라이빗 네트워크 내 MCP 서버를 공개 엔드포인트 없이 Claude 에이전트에 연결해 내부 시스템 자동화",
+          "Amplitude·Clay·Rogo처럼 컴플라이언스 요건이 높은 환경에서 Managed Agents를 안전하게 도입",
+          "개발팀이 도쿄 행사 라이브스트림을 통해 최신 Claude Code 에이전트 기능을 실시간으로 학습"
+        ],
+        "tags": [
+          "Managed Agents",
+          "MCP 터널",
+          "자체 호스팅 샌드박스",
+          "Claude Code",
+          "엔터프라이즈 AI"
+        ],
+        "difficulty": "중급",
+        "toolRecommendation": "Claude"
+      }
+    },
     {
       "title": "How Anthropic's finance team uses Claude to shape the narrative behind the numbers",
       "date": "2026년 5월 22일",
